@@ -10,3 +10,11 @@ permalink: /:year/:month/:day/:title/
 google_fonts:
   - family: 'Noto Sans KR'
   - family: 'Roboto'
+
+  ---
+layout: post
+title: "첫 포스트"
+date: 2024-11-13
+thumbnail: /assets/images/thumbnail.jpg
+---
+
