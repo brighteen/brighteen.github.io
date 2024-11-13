@@ -1,6 +1,18 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: home
+layout: default
+title: "resume"
 ---
+
+# 여명구의 이력서
+- **이름**: 여명구
+- **연락처**: 010-9181-4675
+- **이메일**: brightmgu@naver.com
+
+## 경력
+- [경력 내용 작성]
+
+## 학력
+- 전주대 인공지능학과 2학년 재학중
+
+## 기술
+- 현재 딥러닝에 중점을 두고 공부중
