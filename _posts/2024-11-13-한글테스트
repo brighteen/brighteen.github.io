@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "지킬 글 작성"
+date:   2024-11-13 11:59:55 +0900
+categories: jekyll update
+
+---
+점심 덮밥
+
+{% highlight ruby %}
+print("하이")
+#=> 하이
+{% endhighlight %}
+
+앞으로 이렇게 글 적어야되나
