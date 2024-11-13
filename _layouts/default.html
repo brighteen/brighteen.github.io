@@ -1,7 +1,15 @@
-<div class="sidebar">
-    <h3>카테고리</h3>
-    <ul>
-        <li><a href="#">카테고리1</a></li>
-        <li><a href="#">카테고리2</a></li>
-    </ul>
-</div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    </header>
+    {{ content }}
+    <footer>© 2024 {{ site.title }}</footer>
+</body>
+</html>
