@@ -33,8 +33,12 @@ github_username:  jekyll
 nav:
   - name: Resume
     link: /
-  - name: Categories
-    link: /categories/
+  - name: Dev
+    link: /categories/dev/
+  - name: Life
+    link: /categories/life/
+  - name: Eng
+    link: /categories/eng/
     
 # Build settings
 theme: minima
