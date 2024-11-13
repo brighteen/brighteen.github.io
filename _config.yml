@@ -5,3 +5,8 @@ url: "https://brighteen.github.io"  # 사이트 URL
 theme: minima               # GitHub Pages에서 지원하는 기본 테마
 paginate: 5  # 페이지당 5개의 포스트
 permalink: /:year/:month/:day/:title/
+
+# _config.yml
+google_fonts:
+  - family: 'Noto Sans KR'
+  - family: 'Roboto'
