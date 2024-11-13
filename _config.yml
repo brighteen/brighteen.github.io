@@ -3,3 +3,5 @@ description: "나만의 GitHub Pages 블로그"  # 블로그 설명
 baseurl: ""                 # 사이트의 기본 URL, 사용자 페이지는 빈칸으로 두면 됨
 url: "https://brighteen.github.io"  # 사이트 URL
 theme: minima               # GitHub Pages에서 지원하는 기본 테마
+paginate: 5  # 페이지당 5개의 포스트
+permalink: /:year/:month/:day/:title/
