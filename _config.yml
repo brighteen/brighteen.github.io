@@ -31,7 +31,7 @@ github_username:  jekyll
 
 # 네비게이션 설정
 nav:
-  - name: Home
+  - name: Resume
     link: /
   - name: Categories
     link: /categories/
