@@ -24,7 +24,8 @@ Ultimately, we aim to develop AI models that can make innovative contributions t
 - 딥러닝 시험 14일 밤까지  
 - Dacon에 올라온거 하나씩 해보자  
 - 영어 계속 하는중이고  
-- 딥러닝 영상 보면서 수업 따라가야댐  
+- 딥러닝 영상 보면서 수업 따라가야댐
+- 이렇게 적을거면 메모장 괜히 만들었는데?
 
 웹 기능 추가 목록  
 1. 일단 카테고리 dev(공부한 흔적), life(일상), eng(영어 공부), memo(끄적) 추가
@@ -32,4 +33,6 @@ Ultimately, we aim to develop AI models that can make innovative contributions t
 3. 글마다 댓글, 공감? 이거 동적기능 아닌가?  
 4. 글 공개 비공개 - 이건 글 작성할 때 published true, false 하면 됨.  
 5. 자동번역해서 글 밑에 적어주는거 있었으면 좋겠는데
-6. 글 검색기능  
+6. 글 검색기능
+7. 방문자 수 확인? 이건 Google Analytics뭐 하라는데 아직은
+8. 글 목록에서 글 작성 날짜 확인할 수 있게
