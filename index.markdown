@@ -25,6 +25,7 @@ My recent goal is to create AI models that have been incorporated into biology l
 - Dacon에 올라온거 하나씩 해보자  
 - 딥러닝 영상 보면서 수업 따라가야댐(지금 CNN까지, 이제 sequence data, simple RNN, LLM, PCA봐야댐)  
 - 이렇게 적을거면 메모장 괜히 만들었는데?
+- 커밋이 왜 안되냐ㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑㅑ
 
 
 웹 기능 추가 목록  
