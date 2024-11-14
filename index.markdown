@@ -29,7 +29,7 @@ My recent goal is to create AI models that have been incorporated into biology l
 
 
 웹 기능 추가 목록  
-1. 방명록...은 모르겠음  
+1. 방명록...은 모르겠다. 자꾸 안되서 나중에 해야지.  
 2. 글마다 댓글, 공감? 이거 동적기능 아닌가?  
 3. 자동번역해서 글 밑에 적어주는거 있었으면 좋겠는데  
 4. 글 검색기능
