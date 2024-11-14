@@ -18,12 +18,11 @@ My recent goal is to create AI models that have been incorporated into biology l
 
 
 - 포트폴리오 우수상 ㄴㅇㅅ  
-- 빅데이터 경진대회 한거 dev에 기록해놓자
+- 빅데이터경진대회 2등 ㄴㅇㅅ  
 - 점심 머먹지  
 - 기계학습때매 확통 다시봐야 됨    
 - 딥러닝 시험 14일 밤까지  
 - Dacon에 올라온거 하나씩 해보자  
-- 영어 계속 하는중이고  
 - 딥러닝 영상 보면서 수업 따라가야댐(지금 CNN까지, 이제 sequence data, simple RNN, LLM, PCA봐야댐)  
 - 이렇게 적을거면 메모장 괜히 만들었는데?
 
