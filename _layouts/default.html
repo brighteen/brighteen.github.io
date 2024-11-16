@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }}</title>
+  
+  <!-- 기존 테마 스타일 -->
   <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
 
   <!-- MathJax 추가 -->
@@ -13,13 +15,7 @@
 </head>
 <body>
   <header>
-    <h1>{{ site.title }}</h1>
-    <nav>
-      <ul>
-        <li><a href="{{ "/" | relative_url }}">Home</a></li>
-        <li><a href="{{ "/about/" | relative_url }}">About</a></li>
-      </ul>
-    </nav>
+    {{ content_for_header }}
   </header>
 
   <main>
@@ -27,7 +23,7 @@
   </main>
 
   <footer>
-    <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+    {{ content_for_footer }}
   </footer>
 </body>
 </html>
