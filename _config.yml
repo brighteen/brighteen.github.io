@@ -49,10 +49,10 @@ theme: minima
 plugins:
   - jekyll-feed
 
-kramdown:
-  math_engine: mathjax
-  mathjax:
-    cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js
+# kramdown:
+#   math_engine: mathjax
+#   mathjax:
+#     cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js
 
 
 # Exclude from processing.
