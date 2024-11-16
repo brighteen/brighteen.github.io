@@ -49,6 +49,10 @@ theme: minima
 plugins:
   - jekyll-feed
 
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+
 # kramdown:
 #   math_engine: mathjax
 #   mathjax:
