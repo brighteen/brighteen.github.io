@@ -38,10 +38,10 @@ nav:
     link: /dev/
   - name: Life
     link: /life/
-  - name: Eng
-    link: /eng/
   - name: Memo
     link: /memo/
+  - name: Eng
+    link: /eng/
     
 # Build settings
 theme: minima
