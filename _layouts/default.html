@@ -1,17 +1,30 @@
----
-layout: default
----
-
-<h1>{{ page.title }}</h1>
-
-<ul>
-  {% for post in site.posts %}
-  <li>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-    {% if post.subtitle %}
-      <p>{{ post.subtitle }}</p>
-    {% endif %}
-    <p>Published on {{ post.date | date: "%B %d, %Y" }}</p>
-  </li>
-  {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+</head>
+<body>
+  <header>
+    <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
+  </header>
+  <main>
+    <ul>
+      {% for post in site.posts %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        {% if post.subtitle %}
+          <p>{{ post.subtitle }}</p>
+        {% endif %}
+        <p>Published on {{ post.date | date: "%B %d, %Y" }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </main>
+  <footer>
+    <p>© {{ site.time | date: "%Y" }} {{ site.title }}</p>
+  </footer>
+</body>
+</html>
