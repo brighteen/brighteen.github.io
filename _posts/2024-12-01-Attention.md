@@ -26,4 +26,4 @@ Encoder에서 Context vecter C=마지막 은닉층 h를 가지고 Decoder를 학
 그러면 C(Context Vector)를 만들 때도 h들이 동등한 입장이 됨.  
 즉, 앞서 얘기한 정보 `병목현상을 해결함`과 데이터를 독립으로 보겠다, 병렬 처리를 하겠다를 선언하면서 순차적인 처리를 해서 생기는 엄청난 **계산량**과 그에 따른 미분을 통해 발생하는 **Vanishing Gradient**또한 해결한 것.  
 그냥 RNN을 버리고 새로운 모델이 나온거임.  
-**BAAAM**
+**BAAAM!!**
