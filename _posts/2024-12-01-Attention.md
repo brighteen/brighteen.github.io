@@ -12,7 +12,7 @@ categories: [dev]
 
 ## 기존 RNN 모델  
 ![RNN Model](/assets/images/Encoder_Decoder.png)  
-Encoder에서 Context vecter \$ C \$ =마지막 은닉층 $ (h) $ 를 가지고 Decoder를 학습시키는데  
+Encoder에서 Context vecter \$C\$ =마지막 은닉층 $(h)$ 를 가지고 Decoder를 학습시키는데  
 그럼 마지막 은닉층 전의 은닉층들의 정보는 비교적 덜 가지고 넘어가버리는 **정보 병목 현상**이 발생.  
 그래서 $C$를 모든 은닉상태 \$ (h) \$ 를 고려해서 재구성(Attention 도입).  
 그치만 각각의 Hidden state $ h $ 가 담고 있는 정보들이 평등하지 않음.  
