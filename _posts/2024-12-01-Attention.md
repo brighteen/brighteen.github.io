@@ -11,10 +11,11 @@ categories: [dev]
 그럼 어떻게? How?  
 
 ## 기존 RNN 모델  
-![RNN Model](/assets/images/Encoder_Decoder.png)  
-위 Architecture에서 Encoder에 마지막 Hidden State $$h_5$$를 가지고 Context vecter $$C$$ 를 만들어 Decoder를 학습시키는데  
+![RNN Model](/assets/images/Encoder_Decoder.png) 
+---
+위 Architecture에서 보이듯이 기존 RNN 모델에서는 Encoder에 마지막 Hidden State $$h_5$$로 구성된Context vecter $$C$$ 로부터 Decoder를 학습시키는데  
 그럼 마지막 은닉층 이전 은닉층들의 정보는 비교적 덜 가지고 넘어가버리는 **정보 병목 현상**이 발생함.  
-그래서 Encoder의 모든 $$h$$들과 Decoder의 관심 $$s$$를 Weight sum을 통해 $$C$$를 재구성(Attention 도입).  
+그래서 Encoder의 모든 $$h$$들과 Decoder의 관심 $$s$$의 Weight Sum을 통해 $$C$$를 재구성(Attention 도입).  
 그치만 각각의 Hidden state $$h$$ 가 담고 있는 정보들이 평등하지 않음.  
 이 말이 뭐냐하믄  
 위 사진을 예시로 들면 `I love learning`라는 문장을 Tokenization해서 `I`, `love`, `learning` 3개의 Input 으로 넣었을때 각각에 대응되는 Hidden state를 $$(h_2, h_3, h_4)$$ 라고 했을때,  
