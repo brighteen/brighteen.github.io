@@ -408,8 +408,8 @@
   <div style="background:#fff; width:90%; max-width:440px; border-radius:10px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
     <h3 style="margin:0 0 12px 0; font-size:1.15em; color:#222;">GitHub 토큰 연동</h3>
     <p style="font-size:0.86em; color:#555; line-height:1.5; margin-bottom:15px;">
-      GitHub Personal Access Token(<code>repo</code> 권한)을 입력하시면, <strong>깃허브 사이트로 이동할 필요 없이 블로그 안에서 [발행하기] 클릭 한 번으로 즉시 커밋 & 배포</strong>됩니다.<br>
-      토큰은 브라우저(LocalStorage)에만 안전하게 보관됩니다.
+      깃허브에서 <strong>저장소 쓰기 권한(<code>repo</code> 체크 또는 <code>Contents: Read and write</code>)</strong>이 부여된 Personal Access Token을 입력해 주세요.<br>
+      <span style="color:#0969da; font-size:0.82em;">※ 아래 [토큰 발급 바로가기]를 누르시면 필수 권한(repo)이 자동으로 체크된 상태로 열립니다.</span>
     </p>
     <input type="password" id="input-pat-token" placeholder="ghp_... 또는 github_pat_..." style="width:100%; box-sizing:border-box; padding:9px 12px; border:1px solid #d0d7de; border-radius:6px; font-size:0.9em; margin-bottom:15px;">
     <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -798,7 +798,11 @@ ${body}`;
         closeWriteModal();
       } else {
         const errJson = await putRes.json();
-        alert(`발행 실패: ${errJson.message || '토큰 권한을 확인해 주세요.'}`);
+        let errMsg = errJson.message || '토큰 권한을 확인해 주세요.';
+        if (errMsg.includes('Resource not accessible')) {
+          errMsg = '토큰 권한 부족 (저장소 쓰기 권한이 없습니다)\n\n• Classic 토큰(ghp_)인 경우: [repo] 전체 체크 필요\n• Fine-grained 토큰(github_pat_)인 경우:\n  1) Repository access에서 [brighteen.github.io] 선택\n  2) Repository permissions에서 [Contents] 권한을 [Read and write]로 설정 필요';
+        }
+        alert(`발행 실패: ${errMsg}`);
       }
     } catch (error) {
       alert(`네트워크 오류가 발생했습니다: ${error.message}`);
