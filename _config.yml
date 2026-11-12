@@ -1,5 +1,5 @@
 # Jekyll 설정
-title: ymgu
+title: 구의 기록
 email: brightmgu@gmail.com
 description: >- # 이 부분은 사이트 설명으로 채워집니다.
 baseurl: "" # username.github.io 루트 레포이므로 서브디렉토리 없음
@@ -7,23 +7,30 @@ url: "https://brighteen.github.io" # 사용자 블로그 도메인
 github_username: brighteen
 twitter_username: bright_mgu # If applicable, otherwise remove
 
+# 사이드바 프로필 이미지 설정
+# (변경 방법: assets 폴더에 새 이미지를 넣고 파일명을 아래 경로로 변경하시면 즉시 반영됩니다)
+profile_image: "/assets/0_me.png"
+
 # 테마 설정
 theme: minima
 
 # Collections 설정 (중요)
 collections:
-  notes:
+  math:
     output: true
-    permalink: /notes/:path/
+    permalink: /math/:path/
   mml:
     output: true
     permalink: /mml/:path/
-  research:
+  note:
     output: true
-    permalink: /research/:path/
+    permalink: /note/:path/
   genai:
     output: true
     permalink: /genai/:path/
+  project:
+    output: true
+    permalink: /project/:path/
 
 # 빌드 설정
 markdown: kramdown
@@ -39,20 +46,15 @@ plugins:
 # 한글 파일명 처리를 위한 설정
 encoding: utf-8
 
-# 추가 무시 파일 (기존 백업 폴더들)
+# 빌드 제외 파일
 exclude:
   - Gemfile
   - Gemfile.lock
-  - migrate_to_jekyll.py
-  - migrate_new_content.py
-  - .agent/
+  - docker-compose.yml
   - README.md
-  - MML/
-  - Note/
-  - Research/
-  - GenAI/
-  - _temp_site/
-  - _temp_site_trace/
+  - .agent/
+  - tmp/
+  - backup_assets/
 
 # 문서별 기본 속성 (Frontmatter) 자동 지정
 defaults:
@@ -64,19 +66,25 @@ defaults:
       collection_name: "mml"
   - scope:
       path: ""
-      type: "notes"
+      type: "math"
     values:
       layout: "sidebar"
-      collection_name: "notes"
+      collection_name: "math"
   - scope:
       path: ""
-      type: "research"
+      type: "note"
     values:
       layout: "sidebar"
-      collection_name: "research"
+      collection_name: "note"
   - scope:
       path: ""
       type: "genai"
     values:
       layout: "sidebar"
       collection_name: "genai"
+  - scope:
+      path: ""
+      type: "project"
+    values:
+      layout: "sidebar"
+      collection_name: "project"

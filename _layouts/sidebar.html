@@ -11,8 +11,15 @@
   <body class="layout-sidebar">
     {%- include header.html -%}
 
-    {%- assign col_name = page.collection_name | default: "notes" -%}
-    {%- assign items = site[col_name] | sort: "nav_order" -%}
+    {%- assign col_name = page.collection_name | default: page.collection | default: "math" -%}
+    {%- if col_name == "notes" -%}{%- assign col_name = "math" -%}{%- endif -%}
+    {%- if col_name == "research" -%}{%- assign col_name = "note" -%}{%- endif -%}
+    {%- assign raw_items = site[col_name] -%}
+    {%- if raw_items -%}
+      {%- assign items = raw_items | sort: "nav_order" -%}
+    {%- else -%}
+      {%- assign items = "" | split: "" -%}
+    {%- endif -%}
 
     <main class="page-content sidebar-layout-container" id="sidebar-layout-container" aria-label="Content">
       
@@ -28,7 +35,8 @@
         {%- if is_home -%}
           <div class="sidebar-profile" style="padding: 25px 20px; text-align: left;">
             <div style="text-align: center; margin-bottom: 25px;">
-              <img src="{{ site.baseurl }}/assets/passport_img.jpg" alt="Profile" style="width: 160px; height: auto; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+              <!-- Profile Image (Configurable via _config.yml) -->
+              <img src="{{ site.profile_image | default: '/assets/passport_img.jpg' | relative_url }}" alt="Profile" style="width: 160px; height: 160px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
               <h2 style="margin-top: 15px; font-size: 1.25em; color: #222; margin-bottom: 5px;">Myeonggu Yeo</h2>
               <p style="font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px;">
                 Dept. of Artificial Intelligence<br>
@@ -234,6 +242,8 @@
         }
       });
     </script>
+
+    {%- include write-modal.html -%}
 
   </body>
 </html>

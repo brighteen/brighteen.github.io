@@ -3,6 +3,7 @@ _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata/
+.jekyll-metadata
 
 # 로컬 다움패키지 및 젬 라이브러리
 vendor/

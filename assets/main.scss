@@ -246,3 +246,350 @@ body.layout-sidebar {
   background: #ccc;
   border-radius: 3px;
 }
+
+/* 새 글을 위해 일반 MathJax 디스플레이 수식 블록도 자동으로 가로 스크롤 및 중앙 정렬 지원 */
+mjx-container[display="true"] {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+  padding: 0.4em 0 !important;
+  margin: 0.8em 0 !important;
+  text-align: center !important;
+  
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+  }
+}
+
+/* 헤더 글쓰기 버튼 스타일 (미니멀 모노톤) */
+.btn-write-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: transparent;
+  color: #444 !important;
+  font-size: 0.88em;
+  font-weight: 500;
+  padding: 4px 11px;
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  margin-left: 12px;
+  cursor: pointer;
+  border: 1px solid #d0d7de;
+  box-shadow: none;
+  vertical-align: middle;
+
+  &:hover {
+    background-color: #f6f8fa;
+    color: #111 !important;
+    border-color: #bbb;
+    box-shadow: none;
+    transform: none;
+  }
+  &:active {
+    background-color: #eaeef2;
+    transform: none;
+  }
+  
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* 글쓰기 모달 스타일 */
+.write-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  padding: 20px;
+  box-sizing: border-box;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+
+    .write-modal-card {
+      transform: scale(1) translateY(0);
+    }
+  }
+}
+
+.write-modal-card {
+  background: #ffffff;
+  width: 95vw;
+  max-width: 1240px;
+  height: 88vh;
+  border-radius: 12px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.97) translateY(10px);
+  transition: transform 0.25s ease;
+  font-family: inherit;
+}
+
+.write-modal-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid #e1e4e8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fafbfc;
+  flex-shrink: 0;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    h3 {
+      margin: 0;
+      font-size: 1.05em;
+      font-weight: 700;
+      color: #24292f;
+    }
+
+    .editor-badge {
+      font-size: 0.75em;
+      background: #eef2f6;
+      color: #555;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      color: #888;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 4px;
+      transition: color 0.15s;
+
+      &:hover {
+        color: #222;
+      }
+    }
+  }
+}
+
+.editor-toolbar {
+  padding: 10px 20px;
+  background: #f6f8fa;
+  border-bottom: 1px solid #e1e4e8;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+
+  .toolbar-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    flex: 1;
+
+    select, input {
+      padding: 6px 10px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      font-size: 0.88em;
+      background: #fff;
+      color: #24292f;
+      outline: none;
+
+      &:focus {
+        border-color: #0969da;
+        box-shadow: 0 0 0 2px rgba(9, 105, 218, 0.15);
+      }
+    }
+
+    #post-title {
+      flex: 1;
+      min-width: 220px;
+      font-weight: 600;
+    }
+  }
+
+  .toolbar-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    .btn-tool {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.84em;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #d0d7de;
+      background: #fff;
+      color: #24292f;
+      transition: all 0.15s ease;
+
+      &:hover {
+        background: #f3f4f6;
+        border-color: #bbb;
+      }
+
+      &.primary {
+        background: #24292f;
+        color: #fff;
+        border-color: #24292f;
+
+        &:hover {
+          background: #000;
+        }
+      }
+
+      &.active {
+        background: #e1e4e8;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.editor-workspace {
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+
+  &.view-edit-only {
+    .editor-pane-input { width: 100%; flex: 1; }
+    .editor-pane-preview { display: none; }
+  }
+
+  &.view-preview-only {
+    .editor-pane-input { display: none; }
+    .editor-pane-preview { width: 100%; flex: 1; border-left: none; }
+  }
+
+  .editor-pane-input {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .editor-textarea {
+    width: 100%;
+    flex: 1;
+    border: none;
+    resize: none;
+    padding: 22px 24px;
+    box-sizing: border-box;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #24292f;
+    background: #fff;
+    outline: none;
+
+    &::placeholder {
+      color: #a0a8b0;
+    }
+  }
+
+  .editor-pane-preview {
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+    border-left: 1px solid #e1e4e8;
+    background: #fafbfc;
+  }
+
+  .editor-preview-container {
+    padding: 24px 32px;
+    box-sizing: border-box;
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: #24292f;
+
+    h1, h2, h3, h4 {
+      margin-top: 1.2em;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      color: #111;
+    }
+    h1 { font-size: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    h2 { font-size: 1.3em; }
+    h3 { font-size: 1.15em; }
+
+    blockquote {
+      border-left: 4px solid #ccd1d9;
+      padding-left: 14px;
+      color: #555;
+      margin: 1em 0;
+    }
+
+    code {
+      background: #f1f3f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    pre code {
+      display: block;
+      padding: 12px 16px;
+      overflow-x: auto;
+      background: #f6f8fa;
+    }
+
+    mjx-container[display="true"] {
+      margin: 1em 0 !important;
+    }
+  }
+}
+
+.editor-status-bar {
+  padding: 6px 20px;
+  background: #fafbfc;
+  border-top: 1px solid #e1e4e8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78em;
+  color: #666;
+  flex-shrink: 0;
+
+  .status-left {
+    display: flex;
+    gap: 15px;
+  }
+}

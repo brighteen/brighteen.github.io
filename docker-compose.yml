@@ -1,0 +1,15 @@
+services:
+  jekyll:
+    image: jekyll/jekyll:4
+    command: bundle exec jekyll serve --watch --force_polling --incremental --host 0.0.0.0
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/srv/jekyll
+      - jekyll-bundle:/usr/local/bundle
+    environment:
+      - JEKYLL_ENV=development
+
+volumes:
+  jekyll-bundle:
+    external: true

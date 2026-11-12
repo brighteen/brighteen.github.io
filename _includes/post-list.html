@@ -1,0 +1,162 @@
+{%- comment -%}
+  포스트 목록 컴포넌트
+  사용법: {%- include post-list.html posts=posts_array limit=7 -%}
+{%- endcomment -%}
+
+<div class="recent-post-list" style="margin-top: 25px;">
+  {%- assign display_limit = include.limit | default: 7 -%}
+  {%- assign count = 0 -%}
+
+  {%- for item in include.posts -%}
+    {%- if item.name == "index.md" or item.name == "index.html" or item.url == "/" or item.url == "/index.html" -%}
+      {%- continue -%}
+    {%- endif -%}
+
+    {%- assign count = count | plus: 1 -%}
+    {%- if count > display_limit -%}{%- break -%}{%- endif -%}
+
+    {%- comment -%} 카테고리 이름 결정 {%- endcomment -%}
+    {%- assign path_parts = item.relative_path | split: "/" -%}
+    {%- assign cat_name = "" -%}
+    {%- if path_parts.size > 2 -%}
+      {%- assign raw_sub = path_parts[1] | downcase -%}
+      {%- case raw_sub -%}
+        {%- when "linear-algebra" -%}{%- assign cat_name = "선형대수" -%}
+        {%- when "calculus" -%}{%- assign cat_name = "미적분" -%}
+        {%- when "basics" -%}{%- assign cat_name = "기초" -%}
+        {%- when "probability-statistics" -%}{%- assign cat_name = "확률과 통계" -%}
+        {%- when "machine-learning" -%}{%- assign cat_name = "머신러닝" -%}
+        {%- when "information-theory" -%}{%- assign cat_name = "정보이론" -%}
+        {%- when "vae" -%}{%- assign cat_name = "VAE" -%}
+        {%- when "diffusion" -%}{%- assign cat_name = "Diffusion" -%}
+        {%- when "score-based-model" -%}{%- assign cat_name = "Score-Based Model" -%}
+        {%- when "foundations" -%}{%- assign cat_name = "Foundations" -%}
+        {%- when "part i mathematical foundations" -%}{%- assign cat_name = "Part I" -%}
+        {%- when "part ii central machine learning problems" -%}{%- assign cat_name = "Part II" -%}
+        {%- else -%}{%- assign cat_name = path_parts[1] -%}
+      {%- endcase -%}
+    {%- else -%}
+      {%- case item.collection -%}
+        {%- when "notes" -%}{%- assign cat_name = "수학" -%}
+        {%- when "math" -%}{%- assign cat_name = "수학" -%}
+        {%- when "genai" -%}{%- assign cat_name = "생성모델" -%}
+        {%- when "research" -%}{%- assign cat_name = "노트" -%}
+        {%- when "note" -%}{%- assign cat_name = "노트" -%}
+        {%- when "project" -%}{%- assign cat_name = "프로젝트" -%}
+        {%- when "mml" -%}{%- assign cat_name = "MML" -%}
+        {%- else -%}{%- assign cat_name = item.collection_name | default: "기록" -%}
+      {%- endcase -%}
+    {%- endif -%}
+
+    {%- comment -%} 날짜 결정 {%- endcomment -%}
+    {%- assign post_date = item.date | date: "%Y.%m.%d" -%}
+    {%- if item.date == nil or post_date == "" or post_date == "1970.01.01" -%}
+      {%- assign post_date = "2026.11.12" -%}
+    {%- endif -%}
+
+    <article class="post-card-item" style="margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid #f0f0f0;">
+      <h3 style="margin: 0 0 6px 0; font-size: 1.25em; font-weight: 700; line-height: 1.4;">
+        <a href="{{ item.url | relative_url }}" style="color: #1a1a1a; text-decoration: none;">
+          {{ item.title | default: item.name | replace: ".md", "" | replace: ".html", "" }}
+        </a>
+      </h3>
+      <div style="font-size: 0.88em; color: #777; margin-bottom: 10px; font-weight: 400;">
+        <span>{{ cat_name }}</span>, <span>{{ post_date }}</span>
+      </div>
+      {%- if item.description and item.description != "" -%}
+        <div class="post-card-excerpt tex2jax_ignore" style="font-size: 0.94em; color: #555; line-height: 1.65; margin: 0; word-break: break-word;">
+          {{ item.description | strip_html | truncate: 150 }}
+        </div>
+      {%- else -%}
+        <div class="post-card-excerpt tex2jax_ignore" data-raw="{{ item.content | strip_html | strip_newlines | truncate: 500 | escape }}" style="font-size: 0.94em; color: #555; line-height: 1.65; margin: 0; word-break: break-word;">
+          {{ item.content | strip_html | strip_newlines | replace: "  ", " " | truncate: 140 }}
+        </div>
+      {%- endif -%}
+    </article>
+  {%- endfor -%}
+
+  {%- if count == 0 -%}
+    <p style="color: #888; font-size: 0.95em; padding: 20px 0;">아직 작성된 글이 없습니다. 새로운 글을 작성해 보세요!</p>
+  {%- endif -%}
+</div>
+
+<script>
+(function() {
+  function cleanMath(text) {
+    if (!text) return '';
+    var cleaned = text
+      // 0. Remove markdown images and collapse links: [Text](url) -> Text
+      .replace(/!\[.*?\]\(.*?\)/g, '')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      // 1. Remove display math blocks $$...$$ or \[...\]
+      .replace(/\$\$[\s\S]*?\$\$/g, ' ')
+      .replace(/\$\$[\s\S]*$/g, '')
+      .replace(/\\\[[\s\S]*?\\\]/g, ' ')
+      .replace(/\\\[[\s\S]*$/g, '')
+      // 2. Remove leftover HTML tags
+      .replace(/<[^>]+>/g, '')
+      // 3. Clean LaTeX fractions: \frac{a}{b} -> a/b
+      .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2')
+      // 4. Formatting commands: \boldsymbol{x}, \mathbf{x}, \mathcal{x}, \mathrm{x}, \text{x}
+      .replace(/\\(?:boldsymbol|mathbf|mathcal|mathrm|text|bm)\{([^}]+)\}/g, '$1')
+      // 5. Greek letters & symbols
+      .replace(/\\theta/g, 'θ')
+      .replace(/\\epsilon/g, 'ε')
+      .replace(/\\lambda/g, 'λ')
+      .replace(/\\sigma/g, 'σ')
+      .replace(/\\alpha/g, 'α')
+      .replace(/\\beta/g, 'β')
+      .replace(/\\gamma/g, 'γ')
+      .replace(/\\mu/g, 'μ')
+      .replace(/\\pi/g, 'π')
+      .replace(/\\phi/g, 'φ')
+      .replace(/\\omega/g, 'ω')
+      .replace(/\^?\{\\top\}/g, 'ᵀ')
+      .replace(/\^?\\top/g, 'ᵀ')
+      .replace(/\\sim/g, '~')
+      .replace(/\\times/g, '×')
+      .replace(/\\cdot/g, '·')
+      .replace(/\\in/g, '∈')
+      .replace(/\\leq/g, '≤')
+      .replace(/\\geq/g, '≥')
+      .replace(/\\neq/g, '≠')
+      .replace(/\\approx/g, '≈')
+      .replace(/\\infty/g, '∞')
+      .replace(/\\_/g, '_')
+      // 6. Math delimiters and unclosed math tags
+      .replace(/\$[^$]*\$/g, function(m) { return m.replace(/\$/g, ''); })
+      .replace(/\$[^$]*$/g, '')
+      .replace(/\\([a-zA-Z]+)/g, '')
+      .replace(/[$]/g, '')
+      .replace(/[{}]/g, '')
+      // 7. Markdown formatting marks
+      .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, '$1')
+      // 8. Collapse whitespace
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    if (cleaned.length > 140) {
+      cleaned = cleaned.substring(0, 140).trim() + '...';
+    }
+    return cleaned;
+  }
+
+  function applyClean() {
+    var excerpts = document.querySelectorAll('.post-card-excerpt[data-raw]');
+    excerpts.forEach(function(el) {
+      var raw = el.getAttribute('data-raw');
+      if (raw) {
+        el.textContent = cleanMath(raw);
+        el.removeAttribute('data-raw');
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyClean);
+  } else {
+    applyClean();
+  }
+})();
+</script>
+
