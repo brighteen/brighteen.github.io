@@ -2,7 +2,7 @@
 layout: sidebar
 title: 500평 육계 농장에서 폐사체를 찾는 가장 현실적인 방법, YOLO 객체 추적과 ID 최적화
 collection_name: project
-date: 2026-11-12
+date: 2025-08-19
 ---
 
 > **한 줄 요약**  

@@ -2,7 +2,7 @@
 layout: sidebar
 title: 흉부 x_ray소수 클래스(0.2%)를 생성 모델로 극복하려다 마주한 한계와 실패 회고
 collection_name: project
-date: 2026-11-12
+date: 2026-01-12
 ---
 
 > **한 줄 요약**
