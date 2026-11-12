@@ -1,4 +1,4 @@
----
+﻿---
 layout: sidebar
 title: 다차원 확률 변수의 분산
 collection_name: math
@@ -113,7 +113,7 @@ $$
 이는 행렬  $\boldsymbol{\Sigma}$ 가 양의 준정부호(positive semi-definite)임을 뜻한다.  
 
 기하학적으로,  $n$ 차원 공간에 다변량 확률 분포라는 데이터 분포가 퍼져 있고, 같은 공간에 단위 벡터  $\boldsymbol{v}$ 가 존재한다고 상상해 보자. 이때 내적  $\boldsymbol{v}^\top \boldsymbol{x}$  연산은 다차원 데이터들을  $\boldsymbol{v}$ 가 스팬(span)하는 1차원 직선 위로 정사영(Projection)시키는 것과 같다. 결과적으로 다차원 공간에 흩어진 확률 변수들의 분포가 1차원 직선 위로 압축되며, 우리는 이 직선 위에서 데이터가 얼마나 퍼져 있는지를 측정할 수 있게 된다.  
-![다변량 확률 변수의 정사영과 이차 형식의 관계.png]({{ site.baseurl }}/assets/notes/probability-statistics/relationship-projection-quadratic-form.png){: .img-normal width="500" }
+![다변량 확률 변수의 정사영과 이차 형식의 관계.png]({{ site.baseurl }}/assets/math/probability-statistics/relationship-projection-quadratic-form.png){: .img-normal width="500" }
 
 ## 실제 데이터의 공분산 행렬
  $m$ 개의 샘플(데이터 개수)과  $n$ 개의 특징(Feature, 차원)을 가진 데이터 행렬  $\boldsymbol{Z} \in \mathbb{R}^{m \times n}$ 를 가정한다. 행렬의 각 행(Row)은 하나의 데이터 샘플 벡터  $\boldsymbol{z}\_i^\top$ 를 나타내고, 각 열(Column)은 특징(feature)을 나타낸다.  

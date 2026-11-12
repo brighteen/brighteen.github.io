@@ -1,4 +1,4 @@
----
+﻿---
 layout: sidebar
 title: 헤시안 행렬이 어떻게 곡률을 '측정'하는가
 collection_name: math
@@ -48,5 +48,5 @@ $$
 고유값에 대응되는 고유벡터의 방향은 각각  $y=x, y=-x$ 이다.  
 고유값이 하나는 양수, 하나는 음수라는 것은 이 곡면이 특정 방향으로는 아래로 볼록하게 휘어져 있고, 그에 직교하는 다른 방향으로는 위로 볼록하게 휘어져 있음을 뜻한다. 또한  $x$ 축이나  $y$ 축을 따라서만 이동하면  $f(x,0) = 0$ ,  $f(0,y) = 0$ 이 되어 고도가 변하지 않는다(곡률 0).  
 반면, 고유벡터 방향인 대각선  $y=x$  방향을 따라가면  $f(x,x) = x^2$ 이 되어 아래로 볼록한 포물선( $\lambda\_1 = 1$ )이 되고,  $y=-x$  방향을 따라가면  $f(x,-x) = -x^2$ 이 되어 위로 볼록한 포물선( $\lambda\_2 = -1$ )이 된다.  
-![헤시안 행렬의 기하학적 의미.png]({{ site.baseurl }}/assets/notes/calculus/geometric-meaning-of-hessian.png){: .img-normal width="300" }
+![헤시안 행렬의 기하학적 의미.png]({{ site.baseurl }}/assets/math/calculus/geometric-meaning-of-hessian.png){: .img-normal width="300" }
 결론적으로  $f(x,y) = xy$ 가 그리는 곡면은 전형적인 쌍곡포물면(Hyperbolic Paraboloid), Saddle 형태의 지형이다.

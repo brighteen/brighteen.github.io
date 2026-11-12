@@ -655,7 +655,8 @@ ${body}`;
       // 이미지
       .replace(/!\[(.*?)\]\((.*?)\)/gim, function(m, alt, src) {
         const actualSrc = (window.localImagePreviewCache && window.localImagePreviewCache[src]) || src;
-        return `<div style="text-align:center; margin:16px 0;"><img src="${actualSrc}" alt="${alt}" style="max-width:100%; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.08);"><div style="font-size:0.82em; color:#777; margin-top:5px;">${alt}</div></div>`;
+        const captionHtml = alt ? `<div style="font-size:0.82em; color:#777; margin-top:5px;">${alt}</div>` : '';
+        return `<div style="text-align:center; margin:16px 0;"><img src="${actualSrc}" alt="${alt}" style="max-width:100%; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">${captionHtml}</div>`;
       })
       // 링크
       .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" style="color:#0969da; text-decoration:none;">$1</a>')
@@ -968,8 +969,8 @@ ${body}`;
       });
 
       if (putRes.ok) {
-        // 5. 성공 시 마크다운 코드로 치환
-        const markdownImg = `\n![${baseName}](${virtualPath})\n`;
+        // 5. 성공 시 마크다운 코드로 치환 (사용자 요청: alt 대괄호는 빈 값으로 처리)
+        const markdownImg = `\n![](${virtualPath})\n`;
         textarea.value = textarea.value.replace(uploadPlaceholder, markdownImg);
         onEditorContentChange();
       } else {

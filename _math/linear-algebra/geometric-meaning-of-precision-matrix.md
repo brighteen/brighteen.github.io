@@ -1,4 +1,4 @@
----
+﻿---
 layout: sidebar
 title: 정밀도 행렬의 기하학적 의미
 collection_name: math
@@ -20,7 +20,7 @@ date: 2026-04-18
 
 다변수 데이터에서 거리를 측정할 때, 우리는 '데이터의 맥락'을 고려해야 한다.  
 
-![두 변수간의 양의 상관관계.png]({{ site.baseurl }}/assets/notes/linear-algebra/asset.png){: .img-normal width="500" }
+![두 변수간의 양의 상관관계.png]({{ site.baseurl }}/assets/math/linear-algebra/asset.png){: .img-normal width="500" }
 
 위는 두 확률 변수가 양의 상관관계를 가지는 데이터의 공분산 행렬이  $\begin{bmatrix}3.0 & 2.5 \\ 2.5 & 3.0\end{bmatrix}$ 인 타원형 분포이다. 이때, 두 점 A, B를 생각해보자.  
 - 중심에서  $y=x$  방향(긴 축)으로 떨어져 있는 점 A.
@@ -133,14 +133,14 @@ $$
 데이터 공간이 완벽하게 백색화되었다.  
 
 ZCA백색화: 타원이 원으로 압축되며, 고유벡터의 방향은 변하지 않는 것을 확인할 수 있다.  
-<video controls preload="auto" class="img-normal" width="100%"><source src="{{ site.baseurl }}/assets/notes/linear-algebra/zcawhitening.mp4" type="video/mp4"></video>
+<video controls preload="auto" class="img-normal" width="100%"><source src="{{ site.baseurl }}/assets/math/linear-algebra/zcawhitening.mp4" type="video/mp4"></video>
 
 PCA 백색화: 타원이 원으로 압축됨과 동시에 고유벡터 축으로 공간이 회전한다.  
 (`np.linalg.eigh(cov)` 함수는 디폴트로 행렬의 고유값(`vals`)과 고유벡터(`vecs`)를 계산할 때, 크기를 기준으로 오름차순(작은 값부터 큰 값 순서)으로 정렬하여 반환하기 때문에 첫 번째 주성분이 변환된 공간에서  $y$ 축, 두번째 주성분이  $x$ 축으로 정렬되었다.)  
-<video controls preload="auto" class="img-normal" width="100%"><source src="{{ site.baseurl }}/assets/notes/linear-algebra/pcawhitening.mp4" type="video/mp4"></video>
+<video controls preload="auto" class="img-normal" width="100%"><source src="{{ site.baseurl }}/assets/math/linear-algebra/pcawhitening.mp4" type="video/mp4"></video>
 
 PCA 백색화(반전X)  
-<video controls preload="auto" class="img-normal" width="100%"><source src="{{ site.baseurl }}/assets/notes/linear-algebra/pcawhitening-1.mp4" type="video/mp4"></video>
+<video controls preload="auto" class="img-normal" width="100%"><source src="{{ site.baseurl }}/assets/math/linear-algebra/pcawhitening-1.mp4" type="video/mp4"></video>
 
 
 ## 공분산 행렬은 상관관계를 만드는 변환인가?
@@ -185,7 +185,7 @@ $$
 
 
 결과 데이터의 공분산이  $\boldsymbol{\Sigma}$ 가 되는 것이 아니라,  $\boldsymbol{\Sigma}^2$ 으로 스케일이 한 번 더 곱해져 과장되게 변형되어 버린다.  
-<video controls preload="auto" class="img-normal" width="100%"><source src="{{ site.baseurl }}/assets/notes/linear-algebra/precisionmatrixdirect.mp4" type="video/mp4"></video>
+<video controls preload="auto" class="img-normal" width="100%"><source src="{{ site.baseurl }}/assets/math/linear-algebra/precisionmatrixdirect.mp4" type="video/mp4"></video>
 결론적으로, 데이터를 다루는 '선형 변환 행렬(1차원적인 좌표 공간)'과 데이터의 흩어짐을 나타내는 '공분산 행렬(거리의 제곱 공간)'은 수학적 차원(Scale)이 다르다. 분산은 본질적으로 값의 '제곱'을 기반으로 계산되므로, 공분산 행렬에 담긴 정보를 1차원적인 벡터 변환 행렬로 가져오려면 반드시 제곱근( $1/2$ 승)을 취해야만 논리적 모순이 발생하지 않는다.  
 
 ## 거리 측정과 가우시안 분포: 왜 지수항에는  $\boldsymbol{\Sigma}^{-1}$ 이 들어가는가?

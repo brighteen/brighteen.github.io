@@ -1,4 +1,4 @@
----
+﻿---
 layout: sidebar
 title: 기본 행 연산의 기하학적 의미
 collection_name: math
@@ -153,7 +153,7 @@ $$
 </div>
 
 
-![기본행렬 변환1.png]({{ site.baseurl }}/assets/notes/linear-algebra/1.png){: .img-normal width="400" }
+![기본행렬 변환1.png]({{ site.baseurl }}/assets/math/linear-algebra/1.png){: .img-normal width="400" }
 해당 선형계의 교점은  $(0, 1)$ 이다. 첨가행렬의 변환 과정을 통해 기하학적 변화를 추적한다.  
 
 <div class="math-container">
@@ -173,7 +173,7 @@ $$
 
 
     두 번째 방정식이  $3y = 3$ 으로 변환된다. 기하학적으로 첫 번째 직선  $x + y = 1$ 은 불변하며, 두 직선의 선형 결합으로 도출된 두 번째 방정식은 법선 벡터가  $\begin{bmatrix}-2 \ 1\end{bmatrix}$ 에서  $\begin{bmatrix}0 \ 3\end{bmatrix}$ 으로 변환되어 교점  $(0, 1)$ 을 지나는 기울기 0의 수평선이 된다.  
-![기본행렬 변환2.png]({{ site.baseurl }}/assets/notes/linear-algebra/2.png){: .img-normal width="400" }
+![기본행렬 변환2.png]({{ site.baseurl }}/assets/math/linear-algebra/2.png){: .img-normal width="400" }
     
 - **2단계:**  $R\_2 \leftarrow \frac{1}{3}R\_2$   
 
@@ -196,7 +196,7 @@ $$
 
 
     첫 번째 방정식이  $x = 0$ 으로 변환된다. 두 번째 수평선  $y = 1$ 은 불변하며, 선형 결합을 통해 첫 번째 방정식의 법선 벡터가  $\begin{bmatrix}1 \ 0\end{bmatrix}$ 으로 변환되어 교점  $(0, 1)$ 을 지나며 y축과 일치하는 수직선  $x = 0$ 이 도출된다.  
-![기본행렬 변환3.png]({{ site.baseurl }}/assets/notes/linear-algebra/3.png){: .img-normal width="400" }
+![기본행렬 변환3.png]({{ site.baseurl }}/assets/math/linear-algebra/3.png){: .img-normal width="400" }
     
 
 결과적으로 기본 행 연산(행 교환, 스케일링, 상수배 덧셈)은 기하학적으로 선형계의 교점 위치 좌표를 보존하며, 초평면 집합 내에서의 선형 결합을 통해 하이퍼플레인(2차원의 경우 직선)들의 법선 벡터 방향을 변환시켜 결과적으로 각 하이퍼플레인이 좌표축에 직교하도록 방정식을 재구성하는 과정이다.
