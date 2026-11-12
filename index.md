@@ -3,8 +3,9 @@ layout: sidebar
 title: 구의 기록
 ---
 
-안녕하세요, 인공지능과 수학, 인지과학의 접점을 연구하고 기록하는 블로그입니다.   
-머신러닝의 기초 수학부터 생성 모델의 학습 동역학, 그리고 뇌와 인공지능의 메커니즘을 탐구하는 생각들을 이곳에 담습니다.
+<div style="margin-bottom: 30px;">
+  <img src="{{ '/assets/pale_blue_dot.jpg' | relative_url }}" alt="Pale Blue Dot" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: block;">
+</div>
 
 <hr style="margin: 35px 0 25px 0; border: none; border-top: 1px solid #eee;">
 

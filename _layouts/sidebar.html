@@ -4,7 +4,7 @@
   {%- include head.html -%}
 
   {%- assign is_home = false -%}
-  {%- if page.url == "/" or page.url == "/index.html" -%}
+  {%- if page.url == "/" or page.url == "/index.html" or page.show_profile or page.url == "/resume/" -%}
     {%- assign is_home = true -%}
   {%- endif -%}
 
@@ -38,9 +38,8 @@
               <!-- Profile Image (Configurable via _config.yml) -->
               <img src="{{ site.profile_image | default: '/assets/passport_img.jpg' | relative_url }}" alt="Profile" style="width: 160px; height: 160px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
               <h2 style="margin-top: 15px; font-size: 1.25em; color: #222; margin-bottom: 5px;">Myeonggu Yeo</h2>
-              <p style="font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px;">
-                Dept. of Artificial Intelligence<br>
-                Jeonju University
+              <p style="font-size: 0.9em; color: #666; line-height: 1.5; margin-bottom: 15px; font-weight: 500;">
+                인공지능 부려먹기
               </p>
             </div>
             
