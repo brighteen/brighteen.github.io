@@ -778,7 +778,7 @@ ${body}`;
       // 2. PUT 파일 생성/업데이트
       const putBody = {
         message: commitMsg,
-        content: btoa(unescape(encodeURIComponent(content))), // UTF-8 Base64 인코딩
+        content: btoa(unescape(encodeURIComponent(fullContent))), // UTF-8 Base64 인코딩
         branch: GH_BRANCH
       };
       if (sha) putBody.sha = sha;
@@ -849,11 +849,7 @@ ${body}`;
     const isAdminParam = urlParams.has('admin') || urlParams.has('write');
 
     if (writeBtn) {
-      if (isLocal || hasToken || isAdminParam) {
-        writeBtn.style.display = 'inline-flex';
-      } else {
-        writeBtn.style.display = 'none';
-      }
+      writeBtn.style.display = 'inline-flex';
     }
 
     if (token) {
