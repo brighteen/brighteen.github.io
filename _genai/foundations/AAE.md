@@ -3,6 +3,7 @@ layout: sidebar
 title: AAE
 collection_name: genai
 nav_order: 6999
+date: 2026-05-16
 ---
 
 # Adversarial Autoencoders

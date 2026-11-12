@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 지수함수의 미분과 오일러 상수 e
-collection_name: notes
+collection_name: math
 nav_order: 2999
+date: 2026-04-06
 ---
 
 ## 지수함수의 미분과 비례 상수

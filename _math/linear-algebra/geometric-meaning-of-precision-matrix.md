@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 정밀도 행렬의 기하학적 의미
-collection_name: notes
+collection_name: math
 nav_order: 1999
+date: 2026-04-18
 ---
 
 ## 분산과 불확실성, 그리고 정밀도

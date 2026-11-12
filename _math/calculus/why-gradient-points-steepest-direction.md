@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 그래디언트가 항상 가장 가파른 방향을 가리키는 이유
-collection_name: notes
+collection_name: math
 nav_order: 2999
+date: 2026-04-03
 ---
 
 우리는 다차원 공간에서 임의의 방향 벡터  $\boldsymbol{v}$  (크기가  $1$  인 단위 벡터,  $\Vert \boldsymbol{v}\Vert = 1$ )로 이동했을 때 함수값  $f(\boldsymbol{x})$ 가 최소가 되길 원한다. 이때 방향 도함수는 기울기 벡터(그래디언트)와 방향 벡터의 내적으로 정의된다.  

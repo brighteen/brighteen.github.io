@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 가설 설정과 가설 검정
-collection_name: notes
+collection_name: math
 nav_order: 3999
+date: 2026-04-03
 ---
 
 대립가설이 채택되는 것이 목표인 이유는, 가설을 세운 사람(분석가, 연구자)이 증명해 내고 싶은 주장이기 때문이다. 연구자 입장에서는 기존의 통념(귀무가설)을 기각시키고, 자신의 주장(대립가설)이 채택받은 것이 목표이다.  

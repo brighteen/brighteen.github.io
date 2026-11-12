@@ -3,6 +3,7 @@ layout: sidebar
 title: 디퓨전을 이해하기 위한 개념들
 collection_name: genai
 nav_order: 9999
+date: 2026-04-29
 ---
 
 다변량 가우시안 분포의 연산  

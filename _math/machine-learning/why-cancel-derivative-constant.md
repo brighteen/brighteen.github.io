@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 미분 상수를 상쇄하는 이유
-collection_name: notes
+collection_name: math
 nav_order: 4999
+date: 2026-04-18
 ---
 
 ## 수학적 편의성 (상수 1/2의 도입)

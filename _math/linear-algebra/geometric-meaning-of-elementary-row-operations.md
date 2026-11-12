@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 기본 행 연산의 기하학적 의미
-collection_name: notes
+collection_name: math
 nav_order: 1999
+date: 2026-04-29
 ---
 
 ## 1. 기본행렬(Elementary Matrix)의 정의

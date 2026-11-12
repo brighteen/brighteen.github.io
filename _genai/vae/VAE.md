@@ -3,6 +3,7 @@ layout: sidebar
 title: VAE
 collection_name: genai
 nav_order: 7999
+date: 2026-05-16
 ---
 
 # Auto-Encoding Variational Bayes

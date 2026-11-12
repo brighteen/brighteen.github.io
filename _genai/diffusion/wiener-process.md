@@ -3,6 +3,7 @@ layout: sidebar
 title: 위너 과정
 collection_name: genai
 nav_order: 9999
+date: 2026-05-16
 ---
 
 ![위너 과정.png]({{ site.baseurl }}/assets/genai/diffusion/wiener-process.png){: .img-normal }

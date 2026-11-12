@@ -3,6 +3,7 @@ layout: sidebar
 title: JSD
 collection_name: genai
 nav_order: 6999
+date: 2026-05-16
 ---
 
 ### 정보량과 엔트로피 (Entropy)

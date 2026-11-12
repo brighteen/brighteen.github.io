@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 헤시안 행렬이 어떻게 곡률을 '측정'하는가
-collection_name: notes
+collection_name: math
 nav_order: 2999
+date: 2026-04-03
 ---
 
 헤시안 행렬이 어떻게 곡률을 '측정'하는지는 행렬의 고유값을 통해 대수적으로 증명된다. 특정 좌표에서 구한 헤시안 행렬의 고유값  $\lambda$ 들의 부호를 분석하면, 그 좌표 주변 공간의 3차원 기하학적 형태를 확인할 수 있다.  

@@ -3,6 +3,7 @@ layout: sidebar
 title: 이토 적분
 collection_name: genai
 nav_order: 8999
+date: 2026-05-16
 ---
 
 # 1. 문제의 정의: 노이즈를 적분한다는 것

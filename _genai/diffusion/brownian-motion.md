@@ -3,6 +3,7 @@ layout: sidebar
 title: 브라운 운동
 collection_name: genai
 nav_order: 9999
+date: 2026-04-29
 ---
 
 액체나 기체 속에서 미소입자들이 불규칙하게 운동하는 현상이다. 브라운 운동에 의한 물체의 움직임을 표류라고 한다.  

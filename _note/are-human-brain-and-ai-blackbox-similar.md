@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 인간의 뇌와 인공지능의 블랙박스는 같은 맥락일까
-collection_name: research
+collection_name: note
 nav_order: 10999
+date: 2026-04-03
 ---
 
 인간 뇌의 시냅스 간 신호 전달을 정확히 알 수 없는 주된 이유는 물리적이고 생물할적인 관측의 한계이다. 즉, 데이터 자체를 수집할 수 없어서 내부를 모르는 상태이다.  

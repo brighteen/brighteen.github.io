@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 완전미분방정식의 기하학적 의미
-collection_name: notes
+collection_name: math
 nav_order: 2999
+date: 2026-04-06
 ---
 
 변수  $x$ 와  $y$ 를 가지는 함수  $u(x, y)$ 의 미소 변화량인 전미분(Total Differential)은 다음과 같이 정의된다.  

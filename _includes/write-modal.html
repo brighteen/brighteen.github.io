@@ -347,6 +347,16 @@
         </div>
 
         <!-- 액션 버튼 -->
+        <button type="button" class="btn-tool" onclick="document.getElementById('image-file-input').click()" title="이미지 첨부 (또는 에디터 본문에서 Ctrl+V 붙여넣기)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+          이미지
+        </button>
+        <input type="file" id="image-file-input" accept="image/*" style="display: none;" onchange="handleImageFileSelect(event)">
+
         <button type="button" class="btn-tool" onclick="downloadMarkdownFile()" title="로컬 .md 파일로 저장">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -396,7 +406,7 @@
         <span id="status-word-count">0자</span>
       </div>
       <div class="status-right">
-        <span>팁: <code>$수식$</code> (인라인), <code>$$수식$$</code> (블록) 실시간 렌더링 지원</span>
+        <span>팁: 캡처 이미지 <code>Ctrl+V</code> 붙여넣기 시 자동 업로드 | <code>$수식$</code> 실시간 렌더링</span>
       </div>
     </div>
 
@@ -642,6 +652,13 @@ ${body}`;
       // 코드블록
       .replace(/```([\s\S]*?)```/gim, '<pre><code>$1</code></pre>')
       .replace(/`([^`]+)`/gim, '<code>$1</code>')
+      // 이미지
+      .replace(/!\[(.*?)\]\((.*?)\)/gim, function(m, alt, src) {
+        const actualSrc = (window.localImagePreviewCache && window.localImagePreviewCache[src]) || src;
+        return `<div style="text-align:center; margin:16px 0;"><img src="${actualSrc}" alt="${alt}" style="max-width:100%; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.08);"><div style="font-size:0.82em; color:#777; margin-top:5px;">${alt}</div></div>`;
+      })
+      // 링크
+      .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" style="color:#0969da; text-decoration:none;">$1</a>')
       // 줄바꿈
       .replace(/\n\n+/gim, '<br><br>');
 
@@ -873,12 +890,151 @@ ${body}`;
     }
   }
 
+  // 9.5 이미지 첨부 및 업로드 핸들러
+  window.localImagePreviewCache = {};
+
+  async function uploadImageAndInsertMarkdown(file) {
+    if (!file || !file.type.startsWith('image/')) {
+      alert('이미지 파일만 업로드할 수 있습니다.');
+      return;
+    }
+
+    const token = localStorage.getItem('gh_pat_token');
+    if (!token) {
+      const goToken = confirm(
+        '📷 이미지를 블로그(GitHub 저장소)에 바로 첨부하려면 GitHub 토큰(PAT) 연동이 필요합니다.\n\n' +
+        '지금 토큰을 등록하시겠습니까?'
+      );
+      if (goToken) promptTokenSetting();
+      return;
+    }
+
+    if (file.size > 15 * 1024 * 1024) {
+      alert('이미지 크기가 너무 큽니다. 15MB 이하의 이미지를 사용해 주세요.');
+      return;
+    }
+
+    const textarea = document.getElementById('editor-content');
+    if (!textarea) return;
+
+    // 1. 커서 위치에 임시 업로드 안내 텍스트 삽입
+    const startPos = textarea.selectionStart;
+    const endPos = textarea.selectionEnd;
+    const originalText = textarea.value;
+    const uploadPlaceholder = `\n![이미지 업로드 중...](${file.name || 'uploading'})...\n`;
+
+    textarea.value = originalText.substring(0, startPos) + uploadPlaceholder + originalText.substring(endPos);
+    onEditorContentChange();
+
+    // 2. 파일명 및 저장 경로 결정 (assets/uploads/YYYYMMDD_name_rand.ext)
+    const now = new Date();
+    const dateStr = now.toISOString().slice(0, 10).replace(/-/g, '');
+    const rand = Math.random().toString(36).substring(2, 7);
+    const rawExt = file.name ? file.name.split('.').pop().toLowerCase() : 'png';
+    const ext = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'].includes(rawExt) ? rawExt : 'png';
+    const baseName = (file.name || 'image')
+      .replace(/\.[^/.]+$/, '')
+      .replace(/[^a-zA-Z0-9가-힣_-]/g, '_')
+      .substring(0, 25);
+    const filename = `${dateStr}_${baseName}_${rand}.${ext}`;
+    const targetPath = `assets/uploads/${filename}`;
+    const virtualPath = `/${targetPath}`;
+
+    // 로컬 미리보기용 캐시 (로컬호스트나 업로드 직후에도 프리뷰에서 즉시 렌더링되도록 함)
+    window.localImagePreviewCache[virtualPath] = URL.createObjectURL(file);
+
+    try {
+      // 3. Base64 인코딩
+      const base64Data = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      // 4. GitHub Contents API로 파일 업로드
+      const putRes = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${encodeURIComponent(targetPath)}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: `upload: image ${filename}`,
+          content: base64Data,
+          branch: GH_BRANCH
+        })
+      });
+
+      if (putRes.ok) {
+        // 5. 성공 시 마크다운 코드로 치환
+        const markdownImg = `\n![${baseName}](${virtualPath})\n`;
+        textarea.value = textarea.value.replace(uploadPlaceholder, markdownImg);
+        onEditorContentChange();
+      } else {
+        const errJson = await putRes.json();
+        textarea.value = textarea.value.replace(uploadPlaceholder, '');
+        onEditorContentChange();
+        alert(`이미지 업로드 실패: ${errJson.message || '토큰 권한을 확인해 주세요.'}`);
+      }
+    } catch (err) {
+      textarea.value = textarea.value.replace(uploadPlaceholder, '');
+      onEditorContentChange();
+      alert(`이미지 업로드 중 오류가 발생했습니다: ${err.message}`);
+    }
+  }
+
+  function handleImageFileSelect(e) {
+    const file = e.target.files && e.target.files[0];
+    if (file) {
+      uploadImageAndInsertMarkdown(file);
+    }
+    e.target.value = '';
+  }
+
   // 10. 초기 리스너 등록
   document.addEventListener('DOMContentLoaded', function() {
     const backdrop = document.getElementById('write-modal-backdrop');
     const closeBtn = document.getElementById('modal-close-btn');
 
     if (closeBtn) closeBtn.addEventListener('click', closeWriteModal);
+
+    // 에디터 클립보드 붙여넣기(Ctrl+V) 이미지 감지
+    const editorTextarea = document.getElementById('editor-content');
+    if (editorTextarea) {
+      editorTextarea.addEventListener('paste', function(e) {
+        if (e.clipboardData && e.clipboardData.items) {
+          for (let i = 0; i < e.clipboardData.items.length; i++) {
+            const item = e.clipboardData.items[i];
+            if (item.type.indexOf('image') !== -1) {
+              e.preventDefault();
+              const file = item.getAsFile();
+              if (file) {
+                uploadImageAndInsertMarkdown(file);
+              }
+              break;
+            }
+          }
+        }
+      });
+
+      // 드래그 앤 드롭 지원
+      editorTextarea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+      editorTextarea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          const file = e.dataTransfer.files[0];
+          if (file.type.startsWith('image/')) {
+            uploadImageAndInsertMarkdown(file);
+          }
+        }
+      });
+    }
     
     // 단축키 리스너
     document.addEventListener('keydown', function(e) {

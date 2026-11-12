@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 삼각함수와 회전행렬
-collection_name: notes
+collection_name: math
 nav_order: 1999
+date: 2026-04-06
 ---
 
 삼각함수의 정의  

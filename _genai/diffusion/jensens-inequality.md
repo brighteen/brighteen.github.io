@@ -3,6 +3,7 @@ layout: sidebar
 title: 젠슨 부등식
 collection_name: genai
 nav_order: 9999
+date: 2026-04-29
 ---
 
 기댓값의 볼록 함수와 볼록 함수의 기댓값 사이에 성립하는 부등식이다.  

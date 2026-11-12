@@ -3,6 +3,7 @@ layout: sidebar
 title: 비평형 열역학
 collection_name: genai
 nav_order: 9999
+date: 2026-04-29
 ---
 
 비평형을 이해하려면 먼저 그 반대인 평형 상태를 정의해야 한다.  

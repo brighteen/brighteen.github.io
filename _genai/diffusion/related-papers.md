@@ -3,6 +3,7 @@ layout: sidebar
 title: 관련 논문
 collection_name: genai
 nav_order: 9999
+date: 2026-04-29
 ---
 
 High-Resolution Image Synthesis with Latent Diffusion Models 2021(LDM)  

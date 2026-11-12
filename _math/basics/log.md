@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 로그
-collection_name: notes
+collection_name: math
 nav_order: 999
+date: 2026-04-29
 ---
 
 로그는 지수 함수의 역함수이다. 어떤 수를 나타내기 위해 고정된 밑을 몇 번 거듭제곱해야 하는지를 나타낸다.  

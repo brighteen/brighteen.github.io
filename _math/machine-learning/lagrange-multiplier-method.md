@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 라그랑주 승수법
-collection_name: notes
+collection_name: math
 nav_order: 4999
+date: 2026-04-06
 ---
 
 Lagrange Multiplier Method. 이름부터 벌써 "나 어려운거니까 함부로 보지 마세요"를 말하는 것 같다.  

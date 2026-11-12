@@ -3,6 +3,7 @@ layout: sidebar
 title: Diffusion 1
 collection_name: genai
 nav_order: 9999
+date: 2026-04-29
 ---
 
 ## Abstract

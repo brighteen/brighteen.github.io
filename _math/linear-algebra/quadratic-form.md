@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 이차 형식
-collection_name: notes
+collection_name: math
 nav_order: 1999
+date: 2026-04-06
 ---
 
 수론과 선형대수학에서 이차 형식은 다변수 2차 동차다항식이다(위키백과는 친절하지 않다. 사실 가장 친절했을 수 있다).  

@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 다차원 확률 변수의 분산
-collection_name: notes
+collection_name: math
 nav_order: 4999
+date: 2026-04-03
 ---
 
 이 글을 보기 전 참고하면 좋은 글들  

@@ -3,6 +3,7 @@ layout: sidebar
 title: 미적분 기초
 collection_name: genai
 nav_order: 8999
+date: 2026-05-16
 ---
 
 # 1. 리만 적분(Riemann Integral):

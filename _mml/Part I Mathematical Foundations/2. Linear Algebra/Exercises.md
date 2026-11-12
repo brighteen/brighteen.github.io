@@ -3,6 +3,7 @@ layout: sidebar
 title: Exercises
 collection_name: mml
 nav_order: 101212
+date: 2026-04-03
 ---
 
 연습문제  

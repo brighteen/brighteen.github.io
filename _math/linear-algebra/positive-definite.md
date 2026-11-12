@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 양의 정부호
-collection_name: notes
+collection_name: math
 nav_order: 1999
+date: 2026-04-03
 ---
 
 양의 정부호(positive definite) 행렬의 정의는 다음과 같다.  

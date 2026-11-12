@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: Q-Q Plot
-collection_name: notes
+collection_name: math
 nav_order: 3999
+date: 2026-04-03
 ---
 
 Quantile-Quantile Plot  

@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 제곱근
-collection_name: notes
+collection_name: math
 nav_order: 999
+date: 2026-04-29
 ---
 
 왜 제곱의 '근'인가?  

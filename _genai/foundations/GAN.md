@@ -3,6 +3,7 @@ layout: sidebar
 title: GAN
 collection_name: genai
 nav_order: 6999
+date: 2026-05-16
 ---
 
 # Generative Adversarial Networks

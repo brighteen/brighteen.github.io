@@ -3,6 +3,7 @@ layout: sidebar
 title: SBM을 이해하기 위한 개념들
 collection_name: genai
 nav_order: 8999
+date: 2026-05-16
 ---
 
 ### 1. 확률 미분 방정식 (Stochastic Differential Equation, SDE)

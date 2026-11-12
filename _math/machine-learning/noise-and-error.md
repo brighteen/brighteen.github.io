@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 노이즈와 오차
-collection_name: notes
+collection_name: math
 nav_order: 4999
+date: 2026-04-18
 ---
 
 노이즈는 실제 데이터가 관측될 때 데이터 생성 시스템에 개입하는 통제 및 관측 불가능한 확률적 불확실성을 뜻한다.  

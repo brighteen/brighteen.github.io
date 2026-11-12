@@ -51,7 +51,7 @@
     {%- comment -%} 날짜 결정 {%- endcomment -%}
     {%- assign post_date = item.date | date: "%Y.%m.%d" -%}
     {%- if item.date == nil or post_date == "" or post_date == "1970.01.01" -%}
-      {%- assign post_date = "2026.11.12" -%}
+      {%- assign post_date = site.time | date: "%Y.%m.%d" -%}
     {%- endif -%}
 
     <article class="post-card-item" style="margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid #f0f0f0;">

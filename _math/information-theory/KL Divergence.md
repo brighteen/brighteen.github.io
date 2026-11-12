@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: KL Divergence
-collection_name: notes
+collection_name: math
 nav_order: 5999
+date: 2026-04-18
 ---
 
 # 쿨백-라이블러 발산 (KL Divergence)과 변분 추론

@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 독립 항등 분포
-collection_name: notes
+collection_name: math
 nav_order: 3999
+date: 2026-04-06
 ---
 
 머신러닝과 통계적 추론의 가장 밑바탕에는 독립 항등 분포(independent and identically distributed, i.i.d.)라는 필수적인 가정이 깔려 있다. 수집된  $m$ 개의 데이터 표본 확률 변수  $Z\_1, Z\_2, \dots, Z\_m$  이 i.i.d.를 만족한다는 것은, 이 데이터들이 서로 어떠한 영향도 주고받지 않으며(Independent), 모두 완벽하게 동일한 하나의 확률 분포에서 생성되었다(Identically Distributed)는 것을 의미한다.  

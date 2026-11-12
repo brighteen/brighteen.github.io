@@ -3,6 +3,7 @@ layout: sidebar
 title: 볼츠만 머신
 collection_name: genai
 nav_order: 6999
+date: 2026-05-16
 ---
 
 geoffrey hinton은 RBM을 이용해서  현재 DNN의 초기화가 얼마나 중요한지 밝혀냄. RBM은 Generative Model이라고 하는데 ANN, DNN, CNN, RNN등과 같은 Deterministic Model들과 약간 다른 목표를 갖고 있음.  

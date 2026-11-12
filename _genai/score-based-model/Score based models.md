@@ -3,6 +3,7 @@ layout: sidebar
 title: Score based models
 collection_name: genai
 nav_order: 8999
+date: 2026-04-29
 ---
 
 Score의 정의는 데이터 확률 밀도 함수에 로그를 취한 후 데이터 공간에 대해 미분한 벡터 장, 즉  $\nabla\_{\mathbf{x}} \log p(\mathbf{x})$ 이다. 이는 데이터 공간에서 확률 밀도가 가장 가파르게 증가하는 방향을 지시한다. DDPM은 주입된 노이즈  $\boldsymbol{\epsilon}\_\theta$ 를 예측하도록 신경망을 학습시킨다. 반면 양송의 SBM은 이 스코어를 직접 추정하도록 신경망을 학습시킨다. DDPM 논문의 수식 전개에 따르면 신경망이 예측한 노이즈에 상수를 곱한 값은 해당 시점의 스코어와 동치이다. 따라서 노이즈를 예측하는 행위는 암묵적으로 스코어 매칭을 수행하는 것과 같다.  

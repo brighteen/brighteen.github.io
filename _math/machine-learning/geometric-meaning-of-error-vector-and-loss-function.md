@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 오차 벡터와 손실 함수의 기하학적 의미
-collection_name: notes
+collection_name: math
 nav_order: 4999
+date: 2026-04-18
 ---
 
 ## 오차의 정의

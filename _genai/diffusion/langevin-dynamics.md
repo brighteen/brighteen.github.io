@@ -3,6 +3,7 @@ layout: sidebar
 title: 랑주뱅 동역학
 collection_name: genai
 nav_order: 9999
+date: 2026-04-29
 ---
 
 랑주뱅 동역학(Langevin Dynamics)은 물리학의 입자 운동 방정식, 어떤 시스템의 상태  $\mathbf{x}$ 가 시간  $t$ 에 따라 어떻게 변화하는지를 나타내는 확률 미분 방정식이다. DDPM에서 이 개념을 이산화하여 샘플링 알고리즘으로 구현하였다.  

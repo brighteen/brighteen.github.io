@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 엔트로피
-collection_name: notes
+collection_name: math
 nav_order: 5999
+date: 2026-04-29
 ---
 
 entropy  

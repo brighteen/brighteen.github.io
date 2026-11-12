@@ -1,8 +1,9 @@
 ---
 layout: sidebar
 title: 누적 분포 함수
-collection_name: notes
+collection_name: math
 nav_order: 3999
+date: 2026-04-06
 ---
 
 Cumulative Distribution Function(CDF)  
